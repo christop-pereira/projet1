@@ -221,17 +221,6 @@ header .navbar {
     margin-bottom: 50px;
 }
 
-.urgent-badge {
-  display: inline-block;
-  background: #e63946;
-  color: white;
-  font-weight: bold;
-  padding: 6px 12px;
-  border-radius: 50px;
-  animation: pulse 1.5s infinite;
-  box-shadow: 0 0 10px rgba(230, 57, 70, 0.4);
-}
-
 .floating-availability {
   position: fixed;
   bottom: 20px;
@@ -416,7 +405,7 @@ header .navbar {
     margin: 20px 0;
 }
 .access-list li {
-    font-size: 0.8rem;
+    font-size: 0.9rem;
     margin-bottom: 10px;
     position: relative;
     padding-left: 20px;
