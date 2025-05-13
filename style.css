@@ -236,7 +236,20 @@ header .navbar {
   cursor: pointer;
 }
 
+.floating-availability .close-btn {
+  margin-left: auto;
+  cursor: pointer;
+  font-size: 18px;
+  font-weight: bold;
+  padding: 0 6px;
+  color: #fff;
+  background: transparent;
+  border: none;
+}
 
+.floating-availability .close-btn:hover {
+  color: #ddd;
+}
 
 .hero-section .hero-details ul.hero-features {
     padding-left: 0;
@@ -502,7 +515,7 @@ header .navbar {
 }
 
 .maison-section {
-    margin-top: 20px;
+    margin-top: 30px;
 }
 
 .maison-section h4 {
@@ -597,32 +610,46 @@ header .navbar {
 /* Footer styling */
 
 .footer-section {
-    padding: 20px 0;
-    background: black;
+    background-color: var(--fourth-color); /* Couleur de fond claire */
+    padding: 20px 0; /* Espacement autour du footer */
+    font-family: Arial, sans-serif; /* Police générale */
+    text-align: center; /* Centrer le texte */
 }
 
 .footer-section .section-content {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
+    max-width: 1200px; /* Limite la largeur */
+    margin: 0 auto; /* Centrer le contenu horizontalement */
+    padding: 10px; /* Espacement intérieur */
 }
 
-.footer-section :where(.copyright-text, .social-link, .policy-link){
-    color: white;
-    transition: 0.2s ease;
+.footer-section .copyright-text {
+    font-size: 14px; /* Taille de police pour le texte des droits d'auteur */
+    color: var(--secondary-color); /* Couleur du texte */
+    margin-bottom: 10px; /* Marge inférieure */
 }
 
-.footer-section .social-link-list {
-    display: flex;
-    gap: 25px;
+.footer-section ul {
+    list-style: none; /* Supprime les puces de la liste */
+    padding: 0; /* Enlève le padding */
+    margin: 0; /* Enlève la marge */
+    display: flex; /* Affiche les éléments en ligne */
+    justify-content: center; /* Centre les éléments horizontalement */
+    gap: 15px; /* Espacement entre les liens */
 }
 
-.footer-section .social-link-list .social-link{
-    font-size: var(--font-size-l);
+.footer-section ul li {
+    display: inline; /* Affiche chaque élément de la liste en ligne */
 }
 
-.footer-section .social-link-list .social-link:hover{
-    color: var(--primary-color);
+.footer-section ul li a {
+    text-decoration: none; /* Enlève le soulignement des liens */
+    color: var(--secondary-color); /* Couleur bleue pour les liens */
+    font-size: 14px; /* Taille de police pour les liens */
+    transition: color 0.3s ease; /* Effet de transition pour le changement de couleur */
+}
+
+.footer-section ul li a:hover {
+    color: #0056b3; /* Changement de couleur au survol */
 }
 
 /* Gallery section styling */
@@ -728,6 +755,79 @@ header .navbar {
   cursor: pointer;
 }
 
+/* Dialog modal */
+
+.modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0,0,0,0.6);
+  display: none;
+  justify-content: center;
+  align-items: center;
+  z-index: 1001;
+}
+
+.modal-content {
+    background: white;
+    padding: 30px;
+    border-radius: 12px;
+    max-width: 400px;
+    width: 90%;
+    text-align: center;
+    box-shadow: 0 6px 20px rgba(0,0,0,0.2);
+    position: relative;
+}
+
+.modal-content h3 {
+  margin-bottom: 10px;
+}
+
+.modal-content input {
+  width: 100%;
+  padding: 10px;
+  margin: 15px 0;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+}
+
+.modal-close {
+  position: absolute;
+  top: 10px;
+  right: 14px;
+  font-size: 20px;
+  cursor: pointer;
+}
+
+.error-message {
+  color: red;
+  font-size: 0.9rem;
+  margin-top: 15px;
+}
+
+.btnMail {
+    margin-top: 15px;
+    font-size: var(--font-size-m);
+    justify-content: center;
+    padding: 10px 26px;
+    border: 2px solid transparent;
+    color: var(--secondary-color);
+    border-radius: var(--border-radius-m);
+    background: var(--fourth-color);
+    font-weight: var(--font-weight-bold);
+    transition: all 0.3s ease-in-out;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+}
+
+.btnMail:hover {
+    background: transparent;
+    color: var(--fourth-color);
+    border-color: var(--fourth-color);
+    transform: translateY(-2px);
+    box-shadow: 0 6px 14px rgba(0,0,0,0.15);
+}
 
 /* Responsive media query code for max width 900px */
 @media screen and (max-width: 900px) {
@@ -866,6 +966,7 @@ header .navbar {
     .about-content {
         flex-direction: column-reverse;
         text-align: center;
+        margin-bottom: -50px;
     }
 
     .maison-galleries {
@@ -904,6 +1005,12 @@ header .navbar {
         margin-bottom: 20px;
     }
 
+    /* Service section styling */
+
+    .service-section {
+        margin-bottom: -50px;
+    }
+
     /* Contact section styling */
 
     .contact-section .section-content {
@@ -924,9 +1031,20 @@ header .navbar {
 /* Responsive media query code for max width 640px */
 @media screen and (max-width: 640px) {
     
+    .footer-section {
+        padding: 20px 10px; /* Espacement réduit sur mobile */
+    }
+
     .footer-section .section-content {
-        flex-direction: column;
-        gap: 20px;
-        
+        padding: 0; /* Réduit le padding sur mobile */
+    }
+
+    .footer-section ul {
+        flex-direction: column; /* Afficher les liens sous forme de colonne sur mobile */
+        gap: 10px; /* Espacement entre les éléments */
+    }
+
+    .footer-section .copyright-text {
+        margin-bottom: 15px; /* Augmente la marge sous le texte copyright sur mobile */
     }
 }

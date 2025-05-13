@@ -132,10 +132,60 @@ function prevLightbox() {
   updateLightboxImage(gallery);
 }
 
-// Lightbox sur les images de la section "Situation"
 document.querySelectorAll("#situation .about-image").forEach((img, index) => {
   img.style.cursor = "pointer";
   img.addEventListener("click", () => {
     openLightbox("situation", index);
   });
 });
+
+  function closeFloating() {
+    const floating = document.getElementById("floatingAvailability");
+    floating.style.display = "none";
+  }
+
+// Fermeture de la bulle flottante
+function closeFloating() {
+  const floating = document.getElementById("floatingAvailability");
+  floating.style.display = "none";
+}
+
+// ==== BROCHURE EMAIL MODAL ====
+
+// Sélecteurs
+const modal = document.getElementById("emailModal");
+const openBtn = document.getElementById("openBrochureBtn");
+const emailInput = document.getElementById("userEmail");
+const errorMsg = document.getElementById("emailError");
+
+// Ouvrir le modal
+openBtn.addEventListener("click", () => {
+  modal.style.display = "flex";
+  errorMsg.textContent = "";
+  emailInput.value = "";
+});
+
+// Fermer le modal
+function closeModal() {
+  modal.style.display = "none";
+}
+
+// Valider format email
+function validateEmail(email) {
+  return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
+}
+
+// Soumettre et accéder à la brochure
+function submitEmail() {
+  const email = emailInput.value.trim();
+  if (!validateEmail(email)) {
+    errorMsg.textContent = "Veuillez entrer une adresse email valide.";
+    return;
+  }
+
+  closeModal();
+
+  // Rediriger vers la brochure (modifie ici si besoin)
+  window.open("brochure.pdf", "_blank");
+}
+

@@ -62,7 +62,10 @@
                     </div>
                 </div>
             </div>
-            <a href="#contact" class="floating-availability">Plus que 2 maisons disponibles !</a>
+            <div class="floating-availability" id="floatingAvailability">
+            <a href="#contact" style="color: white; text-decoration: none;"> Plus que 2 maisons disponibles !</a>
+            <span class="close-btn" onclick="closeFloating()">×</span>
+            </div>
 
         </section>
 
@@ -147,14 +150,25 @@
 
             <div class="maison-details">
 
-            <p class="text"><strong>Surface :</strong> env. 200m²</p>
+            <div class="maison-section">
+                <h4>Informations générales</h4>
+                    <ul class="text">
+                        <li><strong>Adresse :</strong> Chemin Babel 19-21 – 1257 Bardonnex</li>
+                        <li>Lot de 4 maisons neuves construites en 2025</li>
+                        <li><strong>Surface :</strong> env. 200m²</li>
+                        <li>4 chambres dont 1 suite parentale</li>
+                        <li>Terrasse et jardin</li>
+                        <li>Disponibles dès le 1<sup>er</sup> juin 2025</li>
+                        <li><strong>Loyer :</strong> CHF 6'500.–/mois, y compris deux places de parking en sous-sol</li>
+                    </ul>
+            </div>
 
             <div class="maison-section">
                 <h4>Disposition</h4>
-                <ul class="text">
-                <li>Rez-de-chaussée : hall d’entrée aménagé, cuisine entièrement équipée ouverte sur un spacieux séjour lumineux avec accès sur la terrasse prolongée par un jardin clôturé, à l’abri des regards.</li>
-                <li>Étage : une suite parentale avec son espace dressing et salle de douche attenante, deux chambres, une grande salle-de-bains avec branchements pour machines à laver et séchoir.</li>
-                </ul>
+                    <ul class="text">
+                        <li>Rez-de-chaussée : <em>hall d’entrée aménagé, cuisine entièrement équipée ouverte sur un spacieux séjour lumineux avec accès sur la terrasse prolongée par un jardin clôturé, à l’abri des regards.</em></li>
+                        <li>Étage : <em>une suite parentale avec son espace dressing et salle de douche attenante, deux chambres, une grande salle-de-bains avec branchements pour machines à laver et séchoir.</em></li>
+                    </ul>
             </div>
 
             <div class="maison-section">
@@ -173,7 +187,18 @@
             </div>
             </div>
 
-            <button class="btn" style="margin: 20px auto; display: block;">Consulter la brochure</button>
+            <button class="btn" id="openBrochureBtn" style="margin: 20px auto; display: block;">Consulter la brochure</button>
+
+            <div id="emailModal" class="modal-overlay">
+            <div class="modal-content">
+                <span class="modal-close" onclick="closeModal()">×</span>
+                <h3>Recevoir la brochure</h3>
+                <p>Veuillez entrer votre adresse email pour accéder à la brochure.</p>
+                <input type="email" id="userEmail" placeholder="exemple@domaine.com" required />
+                <button class="btnMail" onclick="submitEmail()">Valider</button>
+                <p id="emailError" class="error-message"></p>
+            </div>
+            </div>
         </div>
 
         </section>
@@ -212,16 +237,12 @@
          <footer class="footer-section">
             <div class="section-content">
                 <p class="copyright-text">@ 2025 Les maisons de la musardiere</p>
-
-                <div class="social-link-list">
-                    <a href="#" class="social-link"><i class="fa-brands fa-facebook"></i></a>
-                    <a href="#" class="social-link"><i class="fa-brands fa-instagram"></i></a>
-                    <a href="#" class="social-link"><i class="fa-brands fa-x-twitter"></i></a>
-                </div>
-
+                <ul>
+                    <li><a href="doc/mentions-legales.html">Mentions légales</a></li>
+                    <li><a href="doc/politique-de-confidentialite.html">Politique de confidentialité</a></li>
+                    <li><a href="doc/cgu.html">Conditions Générales d'Utilisation</a></li>
+                </ul>
             </div>
-
-            
          </footer>
     </main>
 
