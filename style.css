@@ -1,8 +1,15 @@
 @import url('https://fonts.googleapis.com/css2?family=Miniver&family=Poppins:ital,wght@0,400;0,500;0,600;0,700;1,400&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Playfair+Display:wght@700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Work+Sans:wght@400;500;600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Righteous&display=swap');
+
+
 
 /* Style général */
 * {
-    font-family: "Poppins", sans-serif;
+    font-family: "Work Sans", sans-serif;
     margin: 0;
     padding: 0;
 }
@@ -14,7 +21,7 @@
     --fourth-color: #1c1c1a; /* Noir pour les textes clairs */
     --text-color: #333333; /* Gris foncé pour le texte */
     --background-color: #f5f5f5; /* Gris clair pour le fond */
-    --font-family: "Poppins", sans-serif; /* Police standard */
+    --font-family: "Work Sans", sans-serif; /* Police standard */
     --header-height: 80px; /* Hauteur de l'en-tête */
     --padding: 20px; /* Marge intérieure */
     --border-radius: 5px; /* Coins arrondis */
@@ -95,7 +102,7 @@ header {
     position: fixed;
     width: 100%;
     z-index: 5;
-    background-color: var(--fourth-color);
+    background-color: var(--secondary-color);
 }
 
 header .navbar {
@@ -112,11 +119,14 @@ header .navbar {
 
 .navbar .nav-menu .nav-link {
     padding: 10px 18px;
-    color: var(--primary-color);
+    color: var(--third-color);
     text-decoration: none;
-    font-size: var(--font-size-m);
+    font-size: 1.25rem;
+    font-weight: var(--font-weight-semibold);
     border-radius: var(--border-radius-m);
     transition: 0.3s ease;
+    border-color: var(--fourth-color);
+    background: transparent;
 }
 
 .nav-logo {
@@ -135,7 +145,7 @@ header .navbar {
 }
 
 .navbar .nav-logo .logo-text {
-    color: var(--third-color);
+    color: var(--primary-color);
     font-size: var(--font-size-xl);
     font-weight: var(--font-weight-semibold);
 }
@@ -151,89 +161,133 @@ header .navbar {
 
 
 .navbar .nav-menu .nav-link:hover {    
-    color: black;
-    background: var(--primary-color);
+    color: var(--fourth-color);
+    background: var(--third-color);
 }
 
 /* Hero section styling */
 
 .hero-section {
-    min-height: 120vh;
-    background: var(--primary-color);
-}
-
-.hero-section .section-content {
+    position: relative;
+    min-height: 100vh;
+    background-image: url("images/Commun/Gestimob-Babel-03.jpg");
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
     display: flex;
     align-items: center;
-    min-height: 100vh;
-    color: var(--fourth-color);
-    justify-content: space-between;
-    margin-left: 30px;
+    justify-content: center;
+    color: white;
+    text-align: center;
+    padding: 60px 20px;
 }
 
-.hero-section .hero-details .title {
-    margin-top: 200px;
-    font-size: var(--font-size-xxl);
-    color: var(--fourth-color);
-    font-family: "Miniver", sans-serif;
+/* Superposition sombre pour améliorer lisibilité du texte */
+.hero-section::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.45); /* ajuste l'opacité ici */
+    z-index: 1;
 }
 
-
-.hero-section .hero-details .subtitle {
-    margin-top: 24px;
-    max-width: 70%;
-    font-size: var(--font-size-l);
-    font-weight: var(--font-weight-semibold);
+/* Le container pour le texte */
+.hero-section .text-container {
+    margin-top: 100px;
+    position: relative;
+    z-index: 2;
+    max-width: 800px;
+    padding: 20px;
+    background-color: rgba(255, 255, 255, 0.7);  /* Fond blanc semi-transparent */
+    border-radius: 10px;  /* Pour arrondir les coins du container */
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2);  /* Ombre discrète pour le container */
 }
 
-.hero-section .hero-details .description {
-    max-width: 70%;
-    margin: 24px 0 40px;
-    font-size: var(--font-size-m);
+/* Le texte à l'intérieur du container */
+.hero-section .text-container .title {
+    margin-top: 50px;
+    font-size: 3rem;
+    color: #333;  /* Texte foncé pour un meilleur contraste */
+    margin-bottom: 50px;
 }
 
-.hero-section .hero-details .button {
+.hero-section .text-container .subtitle {
+    font-size: 1.5rem;
+    font-weight: bold;
+    color: #444;  /* Texte plus léger que le titre */
+    margin-bottom: 15px;
+}
+
+.hero-section .text-container .description {
+    font-size: 1.2rem;
+    color: #555;
+    margin-bottom: 20px;
+}
+
+.hero-section .button {
     padding: 10px 26px;
     border: 2px solid transparent;
     color: var(--secondary-color);
     border-radius: var(--border-radius-m);
     background: var(--fourth-color);
-    font-weight: var(--font-weight-medium);
     transition: 0.3s ease;
+    display: flex;
+    align-items: center;
+    font-size: var(--font-size-l);
+
+    justify-content: center;
+    font-weight: var(--font-weight-bold);
 }
 
-.hero-section .hero-details .button:hover, .hero-section .hero-details .buttons .nos-services {
+.hero-section .section-content .buttons {
+    margin-top: 50px;
+    display: flex;
+    gap: 20px;
+    justify-content: center;
+    transition: 0.3s ease;
+    margin-bottom: 50px;
+    border-radius: var(--border-radius-m)
+}
+
+.hero-section .section-content .buttons .devis-gratuit {
     color: var(--secondary-color);
-    border-color: var(--secondary-color);
+    background: var(--fourth-color);
+}
+
+.hero-section .section-content .buttons .devis-gratuit:hover {
+    color: var(--fourth-color);
+    background: transparent;
+    border-color: var(--fourth-color);
+}
+
+.hero-section .section-content .buttons .nos-services {
+    color: var(--fourth-color);
+    border-color: var(--fourth-color);
     background: transparent;
 }
-
-.hero-section .hero-details .button:hover, .hero-section .hero-details .buttons .nos-services:hover {
+.hero-section .section-content .buttons .nos-services:hover {
     color: var(--secondary-color);
     background: var(--fourth-color);
     border-color: var(--fourth-color);
 }
 
-.hero-section .hero-details .button:hover, .hero-section .hero-details .buttons .devis-gratuit {
-    color: var(--third-color);
-    background: var(--fourth-color);
+.hero-section .section-content .buttons .devis-gratuit,
+.hero-section .section-content .buttons .nos-services {
+    cursor: pointer;
 }
 
-.hero-section .hero-details .button:hover, .hero-section .hero-details .buttons .devis-gratuit:hover {
-    color: var(--fourth-color);
-    background: var(--third-color);
-    border-color: var(--third-color);
-}
-
-
-.hero-section .hero-image-wrapper {
-    margin-top: 200px;
-    max-width: 475px;
-    margin-right: 30px;
-    border-radius: var(--border-radius-m);
+.map-wrapper {
+  margin-top: 40px;
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.08);
 }
 
 /* About section styling */
+
 .about-section {
     padding: 120px 0;
     background: white;
@@ -241,16 +295,17 @@ header .navbar {
 
 .about-section .section-content {
     display: flex;
-    gap: 50px;
+    gap: 30px;
     align-items: center;
     justify-content: space-between;
 }
 
 .about-section .about-image-wrapper .about-image {
-    width: 400px;
-    height: 400px;
+    width: 500px;
+    height: auto;
     object-fit: cover;
-    border-radius: var(--border-radius-circle);
+    border-radius: var(--border-radius-m);
+    margin-bottom: 20px;
 }
 
 .about-section .about-details .section-title {
@@ -258,7 +313,6 @@ header .navbar {
 }
 
 .about-section .about-details {
-    max-width: 50%;
     margin-left: 20px;
     margin-right: 20px;
 }
@@ -294,6 +348,15 @@ header .navbar {
     background: rgb(245, 238, 230);
 }
 
+.gallery-row {
+    margin-top: -75px;
+    margin-bottom: 50px;
+}
+
+.maison-details{
+    margin-top: 20px;
+}
+
 
 .service-section .service {
     user-select: none;
@@ -323,8 +386,9 @@ header .navbar {
   justify-content: center;
 }
 
-.service-section .button{
+.service-section .btn {
     margin-top: 200px;
+    font-size: var(--font-size-xl);
     justify-content: center;
     padding: 10px 26px;
     border: 2px solid transparent;
@@ -333,6 +397,11 @@ header .navbar {
     background: var(--third-color);
     font-weight: var(--font-weight-bold);
     transition: 0.3s ease;
+}
+.service-section .btn:hover {
+    background: white;
+    color: var(--third-color);
+    border-color: var(--third-color);
 }
 
 /* Détails des maisons */
@@ -584,6 +653,27 @@ header .navbar {
         --font-size-xxl: 1.8rem;
     }
 
+    .navbar .nav-logo img {
+    width: 70px;
+    height: 70px;
+    margin-right: 15px;
+    border-radius: var(--border-radius-circle);
+    }
+
+    .section-title {
+        margin-top: -30px;
+        padding: 30px 0 50px;
+        font-size: var(--font-size-xl);
+    }
+
+    .section-title .gallery-row .gallery-container .nomVilla {
+        font-size: var(--font-size-s);
+    }
+
+    .nav-logo {
+        gap: 0px; /* Espace entre l'image et le texte (optionnel) */
+    }
+
     body.show-mobile-menu header::before {
         content: "";
         position: fixed;
@@ -608,7 +698,7 @@ header .navbar {
     }
 
     .navbar #menu-open-button {
-        color: white;
+        color: black;
         background: transparent;
     }
 
@@ -638,52 +728,78 @@ header .navbar {
         font-size: var(--font-size-l);
     }
 
+    /* Hero section styling */
+
     .hero-section .section-content {
         text-align: center;
         flex-direction: column-reverse;
         justify-content: center;
-        min-height: 140vh;
+        min-height: 100vh;
+        margin-right: 30px;
+        margin-left: 30px;
     }
 
-    .hero-section .hero-details :is(.subtitle, .description), 
-    .about-section .about-details, .contact-section .contact-form {
-        max-width: 100%;
+    .hero-section {
+        padding: 40px 20px;
+        min-height: auto;
     }
 
-    .hero-section .hero-details {
-        margin-top: -150px;
+    .hero-section .text-container {
+        margin-left: -40px;
+        margin-right: -40px;
+        margin-top: 120px;
+        background-color: rgba(255, 255, 255, 0.8);
     }
 
-    .hero-section .hero-details .buttons {
-        align-items: center;
-        display: flex;
-        gap: 10px;
-        justify-content: center;
+    .hero-section .text-container .title {
+        font-size: var(--font-size-xl);
+        margin-top: 30px;
+        margin-bottom: 30px;
     }
 
-    .hero-section .hero-image-wrapper {
-        margin-top: 100px;
-        text-align: center;
-        max-width: 270px;
-        margin-right: 0;
+    .hero-section .text-container .subtitle {
+        font-size: var(--font-size-l);
+        margin-bottom: 12px;
     }
+
+    .hero-section .text-container .description {
+        font-size: var(--font-size-s);
+        margin-bottom: 20px;
+    }
+
+    .hero-section .button {
+        width: 100%;
+        font-size: var(--font-size-l);
+        padding: 12px 0;
+        margin-bottom: -20px;
+    }
+
+    /* About section styling */
 
     .about-section .section-content {
         gap: 70px;
         flex-direction: column-reverse;
     }
 
+    .about-section .about-image-wrapper {
+        margin-top: -50px;
+        margin-bottom: -50px;
+    }
+
     .about-section .about-image-wrapper .about-image {
+        margin-left: 50px;
         width: 100%;
         height: 100%;
         max-width: 250px;
         aspect-ratio: 1;
     }
 
-    .about-section .about-details {
-        margin-left: 10px;
-        margin-right: 10px;
+    .gallery-row {
+        margin-top: -20px;
+        margin-bottom: 20px;
     }
+
+    /* Contact section styling */
 
     .contact-section .section-content {
         align-items: center;
@@ -692,6 +808,11 @@ header .navbar {
 
     .contact-section .contact-form {
         margin-right: 25px;
+        margin-bottom: -75px;
+    }
+
+    .contact-info-list {
+        margin-bottom: -50px;
     }
 }
 

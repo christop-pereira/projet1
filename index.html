@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Les Maisons De La Musardiere - Accueil</title>
+    <title>Les Maisons De La Musardiere - Home</title>
     <!-- Lien pour les emojis -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
     <!-- Lien Swiper CSS -->
@@ -14,7 +14,7 @@
     <!-- Header / Navbar -->
     <header>
         <nav class="navbar section-content">
-            <a href="#accueil" class="nav-logo">
+            <a href="#home" class="nav-logo">
                 <img src="images/logo.jpeg" alt="Logo" class="logo">
                 <h2 class="logo-text">Les Maisons de la Musardiere</h2>
             </a>
@@ -22,13 +22,13 @@
                 <button id="menu-close-button" class="fas fa-times"></button>
 
                 <li class="nav-item">
-                    <a href="#accueil" class="nav-link">Home</a>
+                    <a href="#home" class="nav-link">Home</a>
                 </li>
                 <li class="nav-item">
-                    <a href="#nous" class="nav-link">Situation</a>
+                    <a href="#situation" class="nav-link">Situation</a>
                 </li>
                 <li class="nav-item">
-                    <a href="#services" class="nav-link">Les Maisons</a>
+                    <a href="#maisons" class="nav-link">Les Maisons</a>
                 </li>
                 <li class="nav-item">
                     <a href="#contact" class="nav-link">Contact</a>
@@ -41,11 +41,12 @@
 
     <main>
         <!-- Hero section -->
-        <section class="hero-section" id="accueil">
+        <section class="hero-section" id="home">
             <div class="section-content">
+                <div class="text-container">
                 <div class="hero-details">
-                    <h2 class="title">Habiter un lieu rare - entre Nature et Genève</h2>
-                    <h3 class="subtitle">Locations residentielles</h3>
+                    <h2 class="title">« Habiter un lieu rare – entre Nature et Genève »</h2>
+                    <h3 class="subtitle">LOCATIONS RESIDENTIELLES</h3>
                     <p class="description">
                         4 maisons mitoyennes à Bardonnex - 200m2 - Nouvelles Constructions (2025)
                     </p>
@@ -66,31 +67,27 @@
                         Bonus : Profitez d'être les premiers habitants pour peaufiner 
                         certains détails au gré de vos besoins et de vos habitudes de vie.
                     </p>
-    
+                </div>
                     <div class="buttons">
                         <a href="#contact" class="button devis-gratuit">Nous contacter</a>
-                        <a href="#services" class="button nos-services">Nos Maisons</a>
+                        <a href="#maisons" class="button nos-services">Nos Maisons</a>
                     </div>
-                </div>
-                <div class="hero-image-wrapper">
-                    <img src="images/Commun/Gestimob-Babel-01.jpg" alt="Hero" class="hero-image">
                 </div>
             </div>
         </section>
 
         <!-- About section -->
-         <section class="about-section" id="nous">
+         <section class="about-section" id="situation">
             <div class="section-content">
                 <div class="about-image-wrapper">
-                    <img src="images/Commun/Gestimob-Babel-03.jpg" alt="About" class="about-image">
+                    <img src="images/Commun/Gestimob-Babel-07.jpg" alt="About" class="about-image">
+                    <img src="images/Commun/Gestimob-Babel-09.jpg" alt="About" class="about-image">
+                    <img src="images/Commun/Gestimob-Babel-11.jpg" alt="About" class="about-image">
                 </div>
                 <div class="about-details">
                     <h2 class="section-title">Situation</h2>
                     <p class="text">
-                        🏡 Bardonnex :                        
-                    </p>
-                    <p class="text">
-                        « Un art de vivre entre sérénité et connexion »
+                        🏡 Bardonnex : « Un art de vivre entre sérénité et connexion »                   
                     </p>
                     <p class="text">
                         Ce village authentique de la campagne genevoise, 
@@ -100,13 +97,6 @@
                     </p>
                     <p class="text">
                         🚘 « A seulement 20min de votre lieu de travail » 
-                    </p>
-                    <p class="text">
-                        Accès autoroute A1 : 5min
-                        ZI de Plan-les-Ouates : 10min
-                        Petit-Lancy : env. 20min
-                        Aéroport International de Genève : env. 20min
-                        Carouge : env. 15min
                     </p>
 
                     <!-- MAP START -->
@@ -119,30 +109,31 @@
                     </div>
                     <!-- MAP END -->
 
+                                        <p class="text">
+                        Accès autoroute A1 : 5min
+                        ZI de Plan-les-Ouates : 10min
+                        Petit-Lancy : env. 20min
+                        Aéroport International de Genève : env. 20min
+                        Carouge : env. 15min
+                    </p>
+
                     <p class="text">
                         « Proche de tout, loin de l’agitation. Juste au bon endroit. » 
                     </p>
-
-
-                    <div class="social-link-list">
-                        <a href="#" class="social-link"><i class="fa-brands fa-facebook"></i></a>
-                        <a href="#" class="social-link"><i class="fa-brands fa-instagram"></i></a>
-                        <a href="#" class="social-link"><i class="fa-brands fa-x-twitter"></i></a>
-                    </div>
                 </div>
              </div>
          </section>
        
         <!-- Service section -->
-        <section class="service-section" id="services">
+        <section class="service-section" id="maisons">
 
         <div class="section-content maison-galleries">
             <h2 class="section-title">Les Maisons</h2>
 
             <!-- Villa B Gallery -->
-             <div class="gallery-row">
+            <div class="gallery-row">
             <div class="gallery-container">
-            <h3>Villa B</h3>
+            <h3 class="nomVilla">Villa B</h3>
             <div class="image-slider" data-gallery="villa-b">
                 <button class="nav prev" onclick="prevSlide('villa-b')">&#10094;</button>
                 <img src="images/Villa-B/Gestimob-Babel-33.jpg" class="gallery-image" data-index="0" onclick="openLightbox('villa-b', 0)">
@@ -152,7 +143,7 @@
 
             <!-- Villa C Gallery -->
             <div class="gallery-container">
-            <h3>Villa C</h3>
+            <h3 class="nomVilla">Villa C</h3>
             <div class="image-slider" data-gallery="villa-c">
                 <button class="nav prev" onclick="prevSlide('villa-c')">&#10094;</button>
                 <img src="images/Villa-C/Gestimob-Babel-51.jpg" class="gallery-image" data-index="0" onclick="openLightbox('villa-c', 0)">
@@ -188,9 +179,9 @@
                 <p class="text">Deux larges places en sous-sol incluses + très grande cave.</p>
             </div>
             </div>
-        </div>
 
-        <button class="button" style="margin: 20px auto; display: block;">Consulter la brochure</button>
+            <button class="btn" style="margin: 20px auto; display: block;">Consulter la brochure</button>
+        </div>
 
         </section>
 
