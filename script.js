@@ -1,3 +1,4 @@
+// Menu mobile
 const navLinks = document.querySelectorAll(".nav-menu .nav-link");
 const menuOpenButton = document.querySelector("#menu-open-button");
 const menuCloseButton = document.querySelector("#menu-close-button");
@@ -6,15 +7,15 @@ menuOpenButton.addEventListener("click", () => {
   document.body.classList.toggle("show-mobile-menu");
 });
 
-// ferme le menu quand le bouton close est cliqué
 menuCloseButton.addEventListener("click", () => menuOpenButton.click());
 
-// ferme le menu quand un lien est cliqué
 navLinks.forEach((link) => {
   link.addEventListener("click", () => menuOpenButton.click());
 });
 
-// Initialize Gallery
+// GESTION DES IMAGES
+
+// 1. Images des villas
 const villaImages = {
   "villa-b": [
     "images/Villa-B/Gestimob-Babel-33.jpg",
@@ -58,54 +59,83 @@ const villaImages = {
   ]
 };
 
+// 2. Images de la section Situation
+const situationImages = [
+  "images/Commun/Gestimob-Babel-07.jpg",
+  "images/Commun/Gestimob-Babel-09.jpg",
+  "images/Commun/Gestimob-Babel-11.jpg"
+];
 
-  const currentIndex = {
-    "villa-b": 0,
-    "villa-c": 0
-  };
+// Index de chaque galerie
+const currentIndex = {
+  "villa-b": 0,
+  "villa-c": 0,
+  "situation": 0
+};
 
-  function updateImage(gallery) {
-    const img = document.querySelector(`[data-gallery="${gallery}"] .gallery-image`);
-    img.src = villaImages[gallery][currentIndex[gallery]];
-    img.setAttribute('data-index', currentIndex[gallery]);
+// Mise à jour de l'image de la galerie Villa
+function updateImage(gallery) {
+  const img = document.querySelector(`[data-gallery="${gallery}"] .gallery-image`);
+  const images = villaImages[gallery];
+  img.src = images[currentIndex[gallery]];
+  img.setAttribute('data-index', currentIndex[gallery]);
+}
+
+// Navigation dans galeries Villa
+function nextSlide(gallery) {
+  const images = villaImages[gallery];
+  currentIndex[gallery] = (currentIndex[gallery] + 1) % images.length;
+  updateImage(gallery);
+}
+
+function prevSlide(gallery) {
+  const images = villaImages[gallery];
+  currentIndex[gallery] = (currentIndex[gallery] - 1 + images.length) % images.length;
+  updateImage(gallery);
+}
+
+// LIGHTBOX (toutes galeries)
+function openLightbox(gallery, index) {
+  const lightbox = document.getElementById("lightbox");
+  currentIndex[gallery] = index;
+  lightbox.setAttribute("data-gallery", gallery);
+  lightbox.style.display = "flex";
+  updateLightboxImage(gallery);
+}
+
+function updateLightboxImage(gallery) {
+  const lightboxImg = document.querySelector("#lightbox img");
+  let imgSrc = "";
+  if (gallery === "situation") {
+    imgSrc = situationImages[currentIndex[gallery]];
+  } else {
+    imgSrc = villaImages[gallery][currentIndex[gallery]];
   }
+  lightboxImg.src = imgSrc;
+}
 
-  function nextSlide(gallery) {
-    currentIndex[gallery] = (currentIndex[gallery] + 1) % villaImages[gallery].length;
-    updateImage(gallery);
-  }
+function closeLightbox() {
+  document.getElementById("lightbox").style.display = "none";
+}
 
-  function prevSlide(gallery) {
-    currentIndex[gallery] = (currentIndex[gallery] - 1 + villaImages[gallery].length) % villaImages[gallery].length;
-    updateImage(gallery);
-  }
+function nextLightbox() {
+  const gallery = document.getElementById("lightbox").getAttribute("data-gallery");
+  const images = gallery === "situation" ? situationImages : villaImages[gallery];
+  currentIndex[gallery] = (currentIndex[gallery] + 1) % images.length;
+  updateLightboxImage(gallery);
+}
 
-  // Lightbox
-  function openLightbox(gallery, index) {
-    currentIndex[gallery] = index;
-    const lightbox = document.getElementById('lightbox');
-    lightbox.setAttribute('data-gallery', gallery);
-    lightbox.style.display = 'flex';
-    updateLightboxImage(gallery);
-  }
+function prevLightbox() {
+  const gallery = document.getElementById("lightbox").getAttribute("data-gallery");
+  const images = gallery === "situation" ? situationImages : villaImages[gallery];
+  currentIndex[gallery] = (currentIndex[gallery] - 1 + images.length) % images.length;
+  updateLightboxImage(gallery);
+}
 
-  function updateLightboxImage(gallery) {
-    const lightboxImg = document.querySelector('#lightbox img');
-    lightboxImg.src = villaImages[gallery][currentIndex[gallery]];
-  }
-
-  function closeLightbox() {
-    document.getElementById('lightbox').style.display = 'none';
-  }
-
-  function nextLightbox() {
-    const gallery = document.getElementById('lightbox').getAttribute('data-gallery');
-    nextSlide(gallery);
-    updateLightboxImage(gallery);
-  }
-
-  function prevLightbox() {
-    const gallery = document.getElementById('lightbox').getAttribute('data-gallery');
-    prevSlide(gallery);
-    updateLightboxImage(gallery);
-  }
+// Lightbox sur les images de la section "Situation"
+document.querySelectorAll("#situation .about-image").forEach((img, index) => {
+  img.style.cursor = "pointer";
+  img.addEventListener("click", () => {
+    openLightbox("situation", index);
+  });
+});
