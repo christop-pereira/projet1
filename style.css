@@ -535,6 +535,11 @@ header .navbar {
     margin: 0;
 }
 
+.maison-section ul.textBcp li {
+    margin-bottom: 8px; /* ou 16px, ajuste selon tes besoins */
+}
+
+
 /* Contact styling */
 
 .contact-section {
