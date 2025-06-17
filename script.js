@@ -186,6 +186,6 @@ function submitEmail() {
   closeModal();
 
   // Rediriger vers la brochure (modifie ici si besoin)
-  window.open("brochure.pdf", "_blank");
+  window.open("brochure/Bardonnex-location.pdf", "_blank");
 }
 
