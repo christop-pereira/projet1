@@ -177,15 +177,61 @@ function validateEmail(email) {
 
 // Soumettre et accéder à la brochure
 function submitEmail() {
-  const email = emailInput.value.trim();
-  if (!validateEmail(email)) {
-    errorMsg.textContent = "Veuillez entrer une adresse email valide.";
-    return;
-  }
+    const email = document.getElementById('userEmail').value;
+    const errorElement = document.getElementById('emailError');
+    errorElement.textContent = '';
 
-  closeModal();
-
-  // Rediriger vers la brochure (modifie ici si besoin)
-  window.open("brochure/Bardonnex-location.pdf", "_blank");
+    fetch('send_mail_brochure.php', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ email })
+    })
+    .then(res => res.json())
+    .then(data => {
+        if (data.success) {
+            window.open('brochure/Bardonnex-location.pdf', '_blank');
+            closeModal();
+        } else {
+            errorElement.textContent = data.message || 'Erreur lors de l’envoi.';
+        }
+    })
+    .catch(() => {
+        errorElement.textContent = 'Une erreur est survenue.';
+    });
 }
+
+// ==== FORMULAIRE DE CONTACT (AJAX) ====
+
+document.addEventListener("DOMContentLoaded", () => {
+  const contactForm = document.getElementById("contactForm");
+  const formMessage = document.getElementById("formMessage");
+
+  if (contactForm) {
+    contactForm.addEventListener("submit", async function (e) {
+      e.preventDefault();
+
+      const formData = new FormData(contactForm);
+
+      try {
+        const response = await fetch(contactForm.action, {
+          method: "POST",
+          body: formData
+        });
+
+        const result = await response.json();
+
+        formMessage.textContent = result.message;
+        formMessage.style.color = result.success ? "green" : "red";
+
+        if (result.success) {
+          contactForm.reset();
+        }
+      } catch (error) {
+        formMessage.textContent = "Une erreur s’est produite. Veuillez réessayer plus tard.";
+        formMessage.style.color = "red";
+      }
+    });
+  }
+});
+
 

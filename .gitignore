@@ -1,0 +1,6 @@
+# Ignorer les fichiers d'environnement sensibles
+.env
+
+# Ignorer le dossier vendor (bibliothèques installées avec Composer)
+vendor/
+

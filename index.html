@@ -232,12 +232,15 @@
                     </li>
                 </ul>
 
-                <form action="send_mail.php" class="contact-form" method="post">
+                <form id="contactForm" action="send_mail_contact.php" class="contact-form" method="post">
                     <input id="name" name="name" type="text" placeholder="Votre nom" class="form-input" required>
                     <input id="email" name="email" type="email" placeholder="Votre mail" class="form-input" required>
                     <textarea id="message" name="message" placeholder="Votre message" class="form-input" required></textarea>
                     <button class="submit-button" type="submit">Envoyer</button>
                 </form>
+
+                <!-- Zone pour afficher les messages -->
+                <p id="formMessage" style="margin-top: 1rem;"></p>
             </div>
         </section>
 
